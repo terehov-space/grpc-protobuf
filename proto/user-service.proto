@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "internal/grpc";
+
+service UserService {
+  rpc GetUserByID (UserRequest) returns (UserResponse);
+  rpc LoginAttempt (LoginRequest) returns (LoginResponse);
+}
+
+message UserRequest {
+  int64 id = 1;
+}
+
+message UserResponse {
+  int64 id = 1;
+  string email = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string middle_name = 5;
+}
+
+message LoginRequest {
+  string email = 1;
+}
+
+message LoginResponse {
+  int64 id = 1;
+  string email = 2;
+  string password = 3;
+}
